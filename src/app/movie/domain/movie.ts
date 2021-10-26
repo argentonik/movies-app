@@ -1,7 +1,7 @@
 import IMovie from "./movie.interface";
-import {AggregateRoot} from "src/app/core/domain/AggregateRoot";
+import {Entity} from "src/app/core/domain/models/entity";
 
-export default class Movie extends AggregateRoot<IMovie> {
+export default class Movie extends Entity<IMovie> {
   constructor(props: IMovie, id: number) {
     super(props, id);
   }
