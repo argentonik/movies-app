@@ -1,9 +1,10 @@
 export default interface IMovie {
+  id: number;
   title: string,
-  posterPath: string|null,
+  poster_path: string|null,
   adult: boolean,
   overview: string,
-  releaseDate: string,
-  backdropPath: string|null,
-  voteAverage: number,
+  release_date: string,
+  backdrop_path: string|null,
+  vote_average: number,
 }

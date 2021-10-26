@@ -2,39 +2,39 @@ import IMovie from "./movie.interface";
 import {Entity} from "src/app/core/domain/models/entity";
 
 export default class Movie extends Entity<IMovie> {
-  constructor(props: IMovie, id: number) {
-    super(props, id);
+  constructor(props: IMovie) {
+    super(props);
   }
 
-  get id() {
-    return this._id;
+  get id(): number {
+    return this.props.id;
   }
 
-  get title() {
+  get title(): string {
     return this.props.title;
   }
 
-  get posterPath() {
-    return this.props.posterPath;
+  get posterPath(): string|null {
+    return this.props.poster_path;
   }
 
-  get adult() {
+  get adult(): boolean {
     return this.props.adult;
   }
 
-  get overview() {
+  get overview(): string {
     return this.props.overview;
   }
 
-  get releaseDate() {
-    return this.props.releaseDate;
+  get releaseDate(): string {
+    return this.props.release_date;
   }
 
-  get backdropPath() {
-    return this.props.backdropPath;
+  get backdropPath(): string|null {
+    return this.props.backdrop_path;
   }
 
-  get voteAverage() {
-    return this.props.voteAverage;
+  get voteAverage(): number {
+    return this.props.vote_average;
   }
 }
