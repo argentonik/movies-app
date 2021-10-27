@@ -2,6 +2,8 @@ import IMovie from "./movie.interface";
 import {Entity} from "src/app/core/domain/models/entity";
 
 export default class Movie extends Entity<IMovie> {
+  protected static readonly posterBaseUrl = 'http://image.tmdb.org/t/p/w300';
+
   constructor(props: IMovie) {
     super(props);
   }
@@ -15,7 +17,7 @@ export default class Movie extends Entity<IMovie> {
   }
 
   get posterPath(): string|null {
-    return this.props.poster_path;
+    return `${Movie.posterBaseUrl}${this.props.poster_path}`;
   }
 
   get adult(): boolean {
