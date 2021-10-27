@@ -1,4 +1,4 @@
-import {Service} from "src/app/core/service/service";
+import {BaseService} from "src/app/core/service/base-service";
 import {Observable, of} from "rxjs";
 import IList from "src/app/core/service/interfaces/list.interface";
 import {Injectable} from "@angular/core";
@@ -12,14 +12,16 @@ enum ApiConfig {
   apiKey = 'ebea8cfca72fdff8d2624ad7bbf78e4c'
 }
 
-@Injectable()
-export default class MovieService extends Service<Movie> {
+@Injectable({
+  providedIn: 'root',
+})
+export default class MovieService extends BaseService<Movie> {
   constructor(private httpClient: HttpClient) {
     super();
   }
 
-  public getList(): Observable<IList<Movie>> {
-    return this.httpClient.get<IList<IMovie>>(`${ApiConfig.url}/movie/now_playing?api_key=${ApiConfig.apiKey}`)
+  public getList(page: number = 1): Observable<IList<Movie>> {
+    return this.httpClient.get<IList<IMovie>>(`${ApiConfig.url}/movie/now_playing?api_key=${ApiConfig.apiKey}&page=${page}`)
       .pipe(map(res => ({...res, results: res.results.map((item: IMovie) => new Movie(item))}) ));
   }
 

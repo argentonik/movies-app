@@ -1,6 +1,6 @@
 .toolbar {
-  height: 80px;
-  background: #474d59;
+  height: var(--toolbar-height);
+  background: var(--dark-blue);
   color: #fff;
   display: flex;
   justify-content: space-between;
@@ -13,7 +13,7 @@
 }
 
 .wrapper {
-  height: calc(100% - 80px);
-  background: #f2f3f5;
-  padding: 40px;
+  min-height: calc(100vh - var(--toolbar-height));
+  background: var(--light-gray);
+  padding: var(--wrapper-padding);
 }

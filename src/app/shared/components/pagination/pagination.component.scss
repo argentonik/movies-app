@@ -1,0 +1,30 @@
+:host {
+  display: block;
+
+  ::ng-deep {
+    ngb-pagination {
+      a.page-link, .page-item.disabled a.page-link, .page-item.active a.page-link {
+        background: transparent;
+        font-weight: 500;
+        color: var(--gray);
+        &:active, &:hover, &:focus {
+          box-shadow: none;
+        }
+      }
+      .page-item.active a.page-link {
+        color: var(--mint);
+        border: 1px solid #dee2e6
+      }
+      a.page-item.disabled a.page-link {
+        color: var(--gray);
+      }
+      a.page-link[aria-label="First"], a.page-link[aria-label="Last"] {
+        color: var(--mint) !important;
+      }
+    }
+  }
+}
+
+ngb-pagination {
+  margin: 40px auto 0 auto;
+}

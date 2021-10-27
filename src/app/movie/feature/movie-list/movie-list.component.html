@@ -1,6 +1,5 @@
-<div class="header">Latest Releases</div>
-<div class="list" *ngIf="items.length">
-  <div class="item" *ngFor="let item of items">
-    <img [src]="'http://image.tmdb.org/t/p/w300' + item.posterPath" [title]="item.title">
-  </div>
-</div>
+<app-list title="Latest Releases" [service]="service">
+  <ng-template let-item>
+    <img class="poster" [src]="'http://image.tmdb.org/t/p/w300' + item.posterPath" [title]="item.title">
+  </ng-template>
+</app-list>

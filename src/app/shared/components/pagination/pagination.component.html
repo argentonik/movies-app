@@ -1,0 +1,13 @@
+<ngb-pagination
+  class="d-flex justify-content-center"
+  [collectionSize]="totalResults"
+  [(page)]="page"
+  [pageSize]="pagination.pageSize"
+  [boundaryLinks]="pagination.boundaryLinks"
+  [maxSize]="pagination.maxSize"
+  (pageChange)="onPageChange(page)">
+  <ng-template ngbPaginationFirst>{{pagination.firstLabel}}</ng-template>
+  <ng-template ngbPaginationLast>{{pagination.lastLabel}}</ng-template>
+  <ng-template ngbPaginationPrevious>{{pagination.previousLabel}}</ng-template>
+  <ng-template ngbPaginationNext>{{pagination.nextLabel}}</ng-template>
+</ngb-pagination>

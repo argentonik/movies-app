@@ -1,0 +1,16 @@
+<div class="header">{{title}}</div>
+
+<div class="list" *ngIf="!loading; else spinner">
+  <div class="item" *ngFor="let item of items">
+    <ng-template
+      [ngTemplateOutlet]="template"
+      [ngTemplateOutletContext]="{ $implicit: item }">
+    </ng-template>
+  </div>
+</div>
+
+<ng-template #spinner>
+  <app-spinner></app-spinner>
+</ng-template>
+
+<app-pagination [page]="page" [totalResults]="totalResults" (pageChanged)="onPageChange($event)"></app-pagination>
