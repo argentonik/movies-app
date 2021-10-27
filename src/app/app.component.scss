@@ -1,0 +1,19 @@
+.toolbar {
+  height: 80px;
+  background: #474d59;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .header {
+    margin: 0 40px;
+    font-size: 18px;
+  }
+}
+
+.wrapper {
+  height: calc(100% - 80px);
+  background: #f2f3f5;
+  padding: 40px;
+}
