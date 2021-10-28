@@ -1,16 +1,31 @@
 <div [style]="'background-image: url(' + item.backdropPath + ')'" *ngIf="item" class="backdrop">
   <div class="blur-container">
+    <nav class="navigation mt-4">
+      <a routerLink="/">
+        <span class="arrow">
+          <
+        </span>
+        <span>Back to list</span>
+      </a>
+      <a routerLink="/">
+        <span>Next movie</span>
+        <span class="arrow">
+          >
+        </span>
+      </a>
+    </nav>
     <div class="content">
       <img class="poster mr-5" [src]="item.posterPath" [title]="item.title">
 
-      <div class="details mt-3">
+      <div class="details">
+        <button type="button" class="btn btn-outline-secondary add-to-favorite mb-1">Add to favorite</button>
         <div class="title mb-2">{{item.title}} ({{item.releaseDate | date:'yyyy'}})</div>
         <div class="overview mb-5">
           <span class="item vertical">Score: {{item.voteAverage}}</span>
           <span class="item vertical">Rating: R</span>
           <span class="item">Release date: {{item.releaseDate | date: 'MMMM dd, yyyy'}}</span>
         </div>
-        <div class="description">
+        <div class="description" *ngIf="item.overview">
           {{item.overview}}
         </div>
       </div>

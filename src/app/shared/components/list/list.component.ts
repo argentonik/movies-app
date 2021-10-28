@@ -4,6 +4,7 @@ import IList from "src/app/core/service/interfaces/list.interface";
 import {takeUntil} from "rxjs/operators";
 import {BaseService} from "src/app/core/service/base-service";
 import {Subject} from "rxjs";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-list',
@@ -23,10 +24,13 @@ export class ListComponent implements OnInit, OnDestroy {
 
   @ContentChild(TemplateRef) template: TemplateRef<any>;
 
-  constructor() { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
 
   public ngOnInit(): void {
-    this.service.getList()
+    const page = this.activatedRoute.snapshot.queryParams['page'] ?? 1;
+    this.addPageParamToRoute(page);
+
+    this.service.getList(page)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: this.onFetchData,
@@ -47,6 +51,7 @@ export class ListComponent implements OnInit, OnDestroy {
         next: this.onFetchData,
         error: this.onError,
       });
+    this.addPageParamToRoute(page);
   }
 
   private onFetchData = (res: IList<Entity<any>>): void => {
@@ -62,5 +67,15 @@ export class ListComponent implements OnInit, OnDestroy {
     this.totalResults = 1;
     this.items = [];
     this.loading = false;
+  }
+
+  private addPageParamToRoute(page: number): void {
+    this.router.navigate(
+      [],
+      {
+        relativeTo: this.activatedRoute,
+        queryParams: {page},
+        queryParamsHandling: 'merge',
+      });
   }
 }
