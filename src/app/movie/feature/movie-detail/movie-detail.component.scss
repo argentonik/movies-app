@@ -1,0 +1,73 @@
+:host {
+  display: flex;
+  min-height: calc(100vh - var(--toolbar-height) - var(--wrapper-padding) * 2);
+  color: white;
+  font-size: 14px;
+  opacity: 0;
+  animation: show 0.5s 1;
+  animation-fill-mode: forwards;
+}
+
+.backdrop {
+  display: flex;
+  flex: 1;
+  margin: -40px;
+  background-position-x: center;
+  background-position-y: 35%;
+
+  .blur-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5); // Make sure this color has an opacity of less than 1
+    backdrop-filter: blur(15px); // This be the blur
+    flex: 1;
+  }
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  margin-top: -5rem;
+  .poster {
+    width: 200px;
+    height: fit-content;
+    align-self: center;
+  }
+
+  .details {
+    max-width: 40%;
+
+    .vertical {
+      border-right: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .title {
+      font-size: 26px;
+      font-weight: 500;
+    }
+
+    .overview {
+      font-size: 16px;
+      .item {
+        padding: 0 10px;
+
+        &:first-child {
+          padding-left: 0;
+        }
+      }
+    }
+
+    .description {
+      padding: 20px 0;
+      border-top: 2px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    }
+  }
+}
+
+@keyframes show{
+  0%{ opacity:0; }
+  100% { opacity:1; }
+}

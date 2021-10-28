@@ -1,5 +1,9 @@
 <app-list title="Latest Releases" [service]="service">
   <ng-template let-item>
-    <img class="poster" [src]="item.posterPath" [title]="item.title">
+    <div class="poster">
+      <a [routerLink]="['/movie', item.id]">
+        <img class="image" [src]="item.posterPath" [title]="item.title">
+      </a>
+    </div>
   </ng-template>
 </app-list>

@@ -1,0 +1,19 @@
+<div [style]="'background-image: url(' + item.backdropPath + ')'" *ngIf="item" class="backdrop">
+  <div class="blur-container">
+    <div class="content">
+      <img class="poster mr-5" [src]="item.posterPath" [title]="item.title">
+
+      <div class="details mt-3">
+        <div class="title mb-2">{{item.title}} ({{item.releaseDate | date:'yyyy'}})</div>
+        <div class="overview mb-5">
+          <span class="item vertical">Score: {{item.voteAverage}}</span>
+          <span class="item vertical">Rating: R</span>
+          <span class="item">Release date: {{item.releaseDate | date: 'MMMM dd, yyyy'}}</span>
+        </div>
+        <div class="description">
+          {{item.overview}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
