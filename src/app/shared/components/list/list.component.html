@@ -1,7 +1,7 @@
 <div class="header">{{title}}</div>
 
-<div class="list" *ngIf="!loading; else spinner">
-  <div class="item" *ngFor="let item of items">
+<div class="list" *ngIf="!(loading$ | async); else spinner">
+  <div class="item" *ngFor="let item of (items$ | async)">
     <ng-template
       [ngTemplateOutlet]="template"
       [ngTemplateOutletContext]="{ $implicit: item }">
@@ -13,4 +13,4 @@
   <app-spinner></app-spinner>
 </ng-template>
 
-<app-pagination [page]="page" [totalResults]="totalResults" (pageChanged)="onPageChange($event)"></app-pagination>
+<app-pagination [page]="page$ | async" [totalResults]="totalResults$ | async" (pageChanged)="onPageChange($event)"></app-pagination>

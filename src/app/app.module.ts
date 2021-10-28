@@ -5,6 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from "@angular/common/http";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {ApiService} from "./core/service/api-service";
+import MovieService from "./movie/service/movie.service";
+import {NgxsModule} from "@ngxs/store";
+import {MovieState} from "./movie/state/movie.state";
+import {NgxsLoggerPluginModule} from "@ngxs/logger-plugin";
 
 @NgModule({
   declarations: [
@@ -12,11 +17,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   imports: [
     BrowserModule,
+    NgxsModule.forRoot([
+      MovieState,
+    ]),
+    NgxsLoggerPluginModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
   ],
-  providers: [],
+  providers: [
+    {provide: ApiService, useExisting: MovieService}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
