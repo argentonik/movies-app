@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {BaseService} from "src/app/core/service/base-service";
+import {ApiService} from "src/app/core/service/api-service";
 import {Entity} from "src/app/core/domain/models/entity";
 
 @Component({
@@ -8,7 +8,7 @@ import {Entity} from "src/app/core/domain/models/entity";
   styleUrls: ['./movie-list.component.scss'],
 })
 export class MovieListComponent implements OnInit {
-  constructor(public service: BaseService<Entity<any>>) {}
+  constructor(public service: ApiService<Entity<any>>) {}
 
   public ngOnInit(): void {}
 }

@@ -2,7 +2,7 @@ import {Component, ContentChild, Input, OnDestroy, OnInit, TemplateRef} from '@a
 import {Entity} from "src/app/core/domain/models/entity";
 import IList from "src/app/core/service/interfaces/list.interface";
 import {takeUntil} from "rxjs/operators";
-import {BaseService} from "src/app/core/service/base-service";
+import {ApiService} from "src/app/core/service/api-service";
 import {Subject} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
 
@@ -13,7 +13,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class ListComponent implements OnInit, OnDestroy {
   @Input() title: string;
-  @Input() service: BaseService<any>;
+  @Input() service: ApiService<any>;
 
   public items: Entity<any>[] = [];
   public page: number;

@@ -1,4 +1,4 @@
-import {BaseService} from "src/app/core/service/base-service";
+import {ApiService} from "src/app/core/service/api-service";
 import {Observable, of} from "rxjs";
 import IList from "src/app/core/service/interfaces/list.interface";
 import {Injectable} from "@angular/core";
@@ -15,7 +15,7 @@ enum ApiConfig {
 @Injectable({
   providedIn: 'root',
 })
-export default class MovieService extends BaseService<Movie> {
+export default class MovieService extends ApiService<Movie> {
   constructor(private httpClient: HttpClient) {
     super();
   }
